@@ -5,10 +5,10 @@
 * GIT LFS initialized with .gitattributes specifically with *.psd file test and *.dat files
 * Almost all event_data.csv files have been updated except the following:
 
-* * Problematic with Importing (N = 3)
-* * * P17
-* * * P24
-* * * P30
+  * Problematic with Importing (N = 3)
+    * P17
+    * P24
+    * P30
 
 * * Problematic with No Timestamps (N = 1)
 * * * P26
