@@ -1,0 +1,675 @@
+type,value,duration,time,offset
+Time 0,,1,0.002,0
+Stimulus,35,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,45,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,65,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,25,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,55,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,155,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,105,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,55,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,155,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,15,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,35,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,45,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,55,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,155,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,105,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,55,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,115,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,25,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,155,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,15,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,35,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,45,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,65,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,25,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,55,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,155,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,105,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,175,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,25,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,175,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,25,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,55,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,155,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,15,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,35,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,45,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,55,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,155,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,105,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,55,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,155,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,15,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,35,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,45,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,55,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,125,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,25,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,155,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,105,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,115,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,25,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,65,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,25,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,55,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,155,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,15,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,35,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,45,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,55,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,125,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,25,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,165,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,25,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,155,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,105,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,55,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,155,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,15,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,35,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,45,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,5,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,165,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,115,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,65,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,165,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,15,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,200,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,210,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,31,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,41,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,101,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,51,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,151,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,151,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,91,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,21,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,51,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,11,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,31,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,41,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,101,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,51,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,151,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,161,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,21,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,151,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,51,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,11,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,31,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,41,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,101,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,51,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,151,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,161,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,21,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,151,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,51,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,11,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,31,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,41,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,101,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,51,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,121,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,21,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,151,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,151,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,51,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,11,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,31,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,41,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,101,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,51,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,151,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,151,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,51,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,11,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,31,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,41,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,101,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,51,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,151,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,151,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,51,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,11,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,31,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,41,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,1,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,1,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,161,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,181,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,61,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,11,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,200,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,210,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,32,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,42,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,52,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,102,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,52,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,102,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,152,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,12,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,32,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,42,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,52,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,102,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,52,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,102,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,152,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,12,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,32,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,42,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,52,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,102,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,52,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,102,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,152,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,12,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,32,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,42,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,52,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,102,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,52,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,102,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,152,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,12,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,32,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,42,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,52,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,102,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,52,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,102,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,152,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,12,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,32,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,42,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,52,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,102,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,52,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,102,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,152,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,12,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,32,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,42,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,62,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,2,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,2,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,2,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,2,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,12,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,200,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,210,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,33,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,43,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,103,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,53,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,103,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,53,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,153,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,13,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,33,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,43,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,103,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,53,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,103,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,53,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,163,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,23,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,163,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,23,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,153,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,13,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,33,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,43,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,113,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,23,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,113,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,23,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,113,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,23,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,103,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,53,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,103,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,53,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,153,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,13,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,33,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,43,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,103,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,53,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,103,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,53,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,153,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,13,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,33,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,43,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,103,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,53,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,103,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,53,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,153,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,13,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,33,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,43,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,113,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,23,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,113,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,23,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,103,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,53,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,103,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,53,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,153,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,13,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,33,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,43,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,123,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,3,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,123,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,73,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,163,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,13,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,200,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,210,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,34,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,44,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,104,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,104,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,54,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,154,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,54,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,14,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,34,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,44,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,104,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,104,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,54,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,154,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,174,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,24,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,54,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,14,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,34,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,44,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,104,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,104,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,64,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,24,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,54,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,154,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,54,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,14,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,34,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,44,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,104,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,104,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,54,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,154,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,54,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,14,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,34,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,44,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,104,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,104,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,54,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,154,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,54,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,14,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,34,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,44,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,104,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,104,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,54,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,164,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,24,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,154,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,54,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,14,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,34,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,44,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,114,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,114,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,64,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,164,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,64,1,0.002,0
+Time 0,,1,0.002,0
+Stimulus,14,1,0.002,0
+Time 0,,0,0.002,0
+New Segment,,0,0.002,0

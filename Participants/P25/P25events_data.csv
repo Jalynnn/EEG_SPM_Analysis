@@ -1,0 +1,21 @@
+type,value,duration,time,offset
+Time 0,,0,0.002,0
+New Segment,,0,0.002,0
+Stimulus,35,1,356.394,0
+Stimulus,45,1,377.324,0
+Stimulus,55,1,390.776,0
+Stimulus,155,1,406.808,0
+Stimulus,105,1,415.53,0
+Stimulus,55,1,422.142,0
+Stimulus,155,1,431.836,0
+Stimulus,15,1,431.836,0
+Stimulus,35,1,440.792,0
+Stimulus,45,1,443.698,0
+Stimulus,55,1,448.5,0
+Stimulus,155,1,453.89,0
+Stimulus,105,1,457.668,0
+Stimulus,65,1,461.084,0
+Stimulus,25,1,464.696,0
+Stimulus,55,1,478.36,0
+Stimulus,115,1,493.498,0
+Stimulus,25,1,497.568,0
