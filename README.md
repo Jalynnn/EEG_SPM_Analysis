@@ -2,11 +2,18 @@
 
 # To-Do
 
-* Break apart prepare.m file
-* Verify 1s epoch info - dead code?
-* Check reference and ground
+* Check reference and ground - Maybe verify with EEGLab
+* String warning with for loop for "conditionlabels" or "condition_labels" variables
+* Create a baseline with the 15 second rest windows
 
 # Updates
+
+12/13/2024
+* Prepare.m file is better separated by task and filled with explanation comments
+* 1-second epoch code is working as expected with no dead code
+* Reviewed channel selections (accel, ref, and gnd) and warnings to create a refined to-do list
+* Removed participant data from GH and uploaded to the OneDrive
+* Updated J_prepare.m files are found everywhere
 
 12/9/2024
 * Repository created with the most recent scripts and participant data (incorrect event_data.csv's)
