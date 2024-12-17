@@ -1,5 +1,5 @@
 %
-% PREPARE.M
+% PREPARE
 %
 
 format shortG
@@ -12,16 +12,48 @@ format shortG
 %
 
 % Load the SPM EEG file
-D = spm_eeg_load('C:/Users/Jalynn/Desktop/BDF_EEG_Files/P10/spmeeg_P10BDF.mat'); % MODIFY HERE (1/8)
+D = spm_eeg_load('C:\Users\Jalynn\Desktop\BDF_EEG_FilesP10/spmeeg_P10BDF.mat'); % MODIFY HERE (1/8)
 
 % Load the events from CSV
-event_data = readtable('C:/Users/Jalynn/Desktop/BDF_EEG_Files/P10/P10events_data.csv'); % MODIFY HERE (2/8)
+event_data = readtable('P10/P10events_data.csv'); % MODIFY HERE (2/8)
 
 
 
 
 %
-% STEP 2: Fix channel names
+% STEP 2: Remove all channels except the first 3, accel, ref, and ground
+%
+
+% Identify the channels to keep
+channels_to_keep = [1, 2, 3];
+
+% Find accelerometer channels
+accel_channels = find(contains(chanlabels(D), 'ACC'));
+
+% Find reference and ground channels
+% TASK: 'REF' AND 'GND' ???
+ref_channel = find(strcmp(chanlabels(D), 'REF')); % Adjust 'REF' to actual label if different
+ground_channel = find(strcmp(chanlabels(D), 'GND')); % Adjust 'GND' to actual label if different
+
+% Combine all channels to keep
+channels_to_keep = unique([channels_to_keep, accel_channels, ref_channel, ground_channel]);
+
+% Create a new meeg object with only selected channels
+S = struct();
+S.D = D;
+S.channels = D.chanlabels(channels_to_keep);
+D_new = spm_eeg_crop(S);
+D = D_new;
+
+
+
+
+%
+% STEP 3: Fix channel names then define montage
+%
+
+%
+% STEP 3.1: Fix channel names
 %
 
 % Fix channel names for the first 3 EEG channels
@@ -42,11 +74,6 @@ for i = 1:length(accel_channels)
     disp(['Renamed accelerometer channel at index ' num2str(accel_idx) ' to ' new_label]);
 end
 
-% Find reference and ground channels
-% TASK: 'REF' AND 'GND' ???
-ref_channel = find(strcmp(chanlabels(D), 'REF')); % Adjust 'REF' to actual label if different
-ground_channel = find(strcmp(chanlabels(D), 'GND')); % Adjust 'GND' to actual label if different
-
 % Rename reference and ground channels
 if ~isempty(ref_channel)
     D = chanlabels(D, ref_channel, 'REF');
@@ -58,43 +85,8 @@ if ~isempty(ground_channel)
     disp(['Renamed ground channel at index ' num2str(ground_channel) ' to GND']);
 end
 
-
-
-
 %
-% STEP 3: Remove all channels except the first 3, accel, ref, and ground
-%
-
-% Identify the channels to keep
-channels_to_keep = [1, 2, 3];
-
-% Find accelerometer channels
-accel_channels = find(contains(chanlabels(D), 'ACC'));
-
-% Combine all channels to keep
-channels_to_keep = unique([channels_to_keep, accel_channels, ref_channel, ground_channel]);
-
-% Ensure indices are within the valid range
-channels_to_keep = channels_to_keep(channels_to_keep <= D.nchannels);
-
-% Create a new meeg object with only selected channels
-S = struct();
-S.D = D;
-S.channels = D.chanlabels(channels_to_keep);
-D = spm_eeg_crop(S);
-
-% Update channels_to_keep to match the new dataset
-channels_to_keep = 1:D.nchannels; % After cropping, indices reset to 1:N
-disp(['Number of remaining channels: ' num2str(D.nchannels)]);
-disp('Remaining channel labels:');
-disp(D.chanlabels);
-
-
-
-
-
-%
-% STEP 4: Define the montage
+% STEP 3.2: Define the montage
 %
 
 % Define montage matrix
@@ -126,9 +118,6 @@ montage_matrix(channels_to_remove, :) = 0;
 %     0     0     1     0  % Channel 3 (retained)
 %     0     0     0     0  % Channel 4 (removed)
 
-disp('Channels to keep:');
-disp(channels_to_keep);
-
 % Apply the montage
 S = struct();
 S.D = D;
@@ -138,13 +127,11 @@ S.montage.labelnew = D.chanlabels(channels_to_keep);
 S.keepothers = 0;
 D = spm_eeg_montage(S);
 
-disp('Applied montage successfully.');
-
 
 
 
 %
-% STEP 5: Define conditions for comparisons
+% STEP 4: Define conditions for comparisons
 %
 
 % Define the event values we need for each condition
@@ -163,7 +150,7 @@ condition_labels = {"Condition 1"}; % MODIFY HERE (4/8)
 
 
 %
-% STEP 6: Fix the triggers
+% STEP 5: Fix the triggers
 %
 
 % Time window for epochs (in milliseconds)
@@ -249,7 +236,7 @@ end
 
 
 %
-% STEP 7: Epoch our data into 1 second intervals (to match the engagement paper)
+% STEP 6: Epoch our data into 1 second intervals (to match the engagement paper)
 %
 
 fprintf('Starting epoching process...\n');
@@ -304,7 +291,7 @@ writematrix(epoch_trl, 'epoch_trl.csv');
 
 
 %
-% STEP 8: Baseline Correction
+% STEP 7: Baseline Correction
 %
 
 % TASK: 15 seconds break
@@ -319,13 +306,17 @@ baseline_D = spm_eeg_bc(S);
 
 
 %
-% STEP 9: Output
+% STEP 8: Output
 %
 
 disp(trl);
 disp(conditionlabels);
 disp(trials);
 
+
+
+
+% TASK: Save D with or without epochs?
 
 % Set up the SPM structure
 S = struct();
@@ -339,6 +330,7 @@ modified_D = spm_eeg_epochs(S);
 modified_D.save();
 modified_D_1 = modified_D; % MODIFY HERE (5/8)
 trl_1 = trl; % MODIFY HERE (6/8)
+
 
 
 % Set up the SPM structure for epoching
