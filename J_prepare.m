@@ -173,14 +173,13 @@ poststim = 1000; % Time after the stimulus
 % Initialize an empty trial structure
 trials = []; % Store trial definitions
 trl = []; % Store trial timing (start, end, offset)
-% conditionlabels = []; % Store condition labels
 conditionlabels = string([]); % Initialize as an empty string array
 
 % Loop through each condition to define trial events
 for cond = 1:length(condition_events)
     start_event = condition_events{cond}(1);
     end_event = condition_events{cond}(2);
-    label = condition_labels{cond};
+    label = string(condition_labels{cond});
     
     % Filter the events for the current condition’s start markers
     cond_table = event_data(strcmp(event_data.type, 'Stimulus') & (event_data.value == start_event | event_data.value == end_event), :);
@@ -194,9 +193,16 @@ for cond = 1:length(condition_events)
     % STEP 5.1: Define trial structure
     %
 
+    if ~isempty(label)
+        conditionlabels = [conditionlabels; label]; % Append if not empty
+    else
+        disp('Empty label detected, replacing with "Unknown".');
+        conditionlabels = [conditionlabels; "Unknown"];
+    end
+
     trials = [trials,
-        struct('eventtype', 'Stimulus', 'eventvalue', num2str(start_event), 'prestim', prestim, 'poststim', poststim, 'conditionlabel', label),
-        struct('eventtype', 'Stimulus', 'eventvalue', num2str(start_event), 'prestim', prestim, 'poststim', poststim, 'conditionlabel', append(label, "_TEST"))
+        struct('eventtype', 'Stimulus', 'eventvalue', num2str(start_event), 'prestim', prestim, 'poststim', poststim, 'conditionlabel', string([label])),
+        struct('eventtype', 'Stimulus', 'eventvalue', num2str(start_event), 'prestim', prestim, 'poststim', poststim, 'conditionlabel', string([append(label, "_TEST")]))
     ];
 
     %
