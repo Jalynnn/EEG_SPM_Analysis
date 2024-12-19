@@ -1,4 +1,26 @@
 %
+% 12.19.2024
+% I just had the biggest aha moment. We only want one line in the trl - the
+% start and end of one condition like 42/12. So why did we want 7 labels
+% in the conditionlabels? This created an unequal amount of information in
+% the S variable creating a line of issues starting with string being set
+% to unknown, going down a path and eventually coming back to the same
+% conclusion that if we wanted to use all 7 labels, we would have to use
+% all 7 sets of cycles creating 7 unequal sets of trials and spm won't work
+% with datasets that are unequal hence the previous error: all trials sould
+% have identical and positive lengths. 
+
+% What does this mean for us now. The ouptputs are all correct right now
+% and create a one line trl file with one label using conditional_label
+% from the beginning instead of the heavily modified conditionlabels. This
+% means that a lot of the code in this script is unnecessary and should
+% probably be cut. This is now an upcoming task as the goal moving forward
+% is just to have working code. 
+
+% Also note that it sounds like using fieldtrip would have allowed for
+% variable-length epochs
+
+%
 % PREPARE.M
 %
 
@@ -332,12 +354,11 @@ disp(conditionlabels);
 disp('Trials Structure');
 disp(trials);
 
-
 % Set up the SPM structure
 S_epochs = struct();
 S_epochs.D = D_bc;
 % This was here previously but I don't know if it's doing what we want it to
-% trl = condition_timestamps;
+trl = condition_timestamps;
 
 fs = D_bc.fsample;
 S_epochs.trl = trl;
@@ -347,7 +368,7 @@ if size(S_epochs.trl, 1) == length(conditionlabels)
     disp('True');
 end
 
-conditionlabels = cellstr(conditionlabels);
+conditionlabels = cellstr(condition_labels);
 size(conditionlabels)
 S_epochs.conditionlabels = conditionlabels;
 
@@ -363,7 +384,6 @@ modified_D.save();
 
 modified_D_1 = modified_D; % MODIFY HERE (5/8)
 trl_1 = trl; % MODIFY HERE (6/8)
-
 
 % Set up the SPM structure for epoching
 % epoch_S = struct();
