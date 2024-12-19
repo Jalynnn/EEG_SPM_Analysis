@@ -333,15 +333,14 @@ disp(trials);
 
 % Set up the SPM structure
 S_epochs = struct();
-S_epochs.D = D_bc;
+S_.D = D;
 % This was here previously but I don't know if it's doing what we want it to
 trl = condition_timestamps;
-S_epochs.trl = trl;
-S_epochs.conditionlabels = conditionlabels;
+S.trl = trl;
+S.conditionlabels = conditionlabels;
+modified_D = spm_eeg_epochs(S);
 
-modified_D = spm_eeg_epochs(S_epochs);
 modified_D.save();
-
 modified_D_1 = modified_D; % MODIFY HERE (5/8)
 trl_1 = trl; % MODIFY HERE (6/8)
 
