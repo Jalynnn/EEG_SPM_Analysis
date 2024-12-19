@@ -193,13 +193,6 @@ for cond = 1:length(condition_events)
     % STEP 6.1: Define trial structure
     %
 
-    if ~isempty(label)
-        conditionlabels = [conditionlabels; label]; % Append if not empty
-    else
-        disp('Empty label detected, replacing with "Unknown!!!!".');
-        conditionlabels = [conditionlabels; "Unknown"];
-    end
-
     trials = [trials,
         struct('eventtype', 'Stimulus', 'eventvalue', num2str(start_event), 'prestim', prestim, 'poststim', poststim, 'conditionlabel', string([label])),
         struct('eventtype', 'Stimulus', 'eventvalue', num2str(start_event), 'prestim', prestim, 'poststim', poststim, 'conditionlabel', string([append(label, "_TEST")]))
