@@ -12,10 +12,10 @@ format shortG
 %
 
 % Load the SPM EEG file
-D = spm_eeg_load('C:/Users/Jalynn/Desktop/BDF_EEG_Files/P10/spmeeg_P10BDF.mat'); % MODIFY HERE (1/8)
+D = spm_eeg_load('C:/Users/Jalynn/Desktop/BDF_EEG_Files/P11/spmeeg_P11BDF.mat'); % MODIFY HERE (1/8)
 
 % Load the events from CSV
-event_data = readtable('C:/Users/Jalynn/Desktop/BDF_EEG_Files/P10/P10events_data.csv'); % MODIFY HERE (2/8)
+event_data = readtable('C:/Users/Jalynn/Desktop/BDF_EEG_Files/P11/P11events_data.csv'); % MODIFY HERE (2/8)
 
 
 
@@ -32,6 +32,9 @@ for i = 1:3
     D = chanlabels(D, i, new_label);
     disp(['Renamed channel ' old_label ' at index ' num2str(i) ' to ' new_label]);
 end
+
+% Find accelerometer channels
+accel_channels = find(contains(chanlabels(D), 'ACC'));
 
 % Rename Accelerometer channel
 
@@ -67,9 +70,6 @@ end
 
 % Identify the channels to keep
 channels_to_keep = [1, 2, 3];
-
-% Find accelerometer channels
-accel_channels = find(contains(chanlabels(D), 'ACC'));
 
 % Combine all channels to keep
 channels_to_keep = unique([channels_to_keep, accel_channels, ref_channel, ground_channel]);
@@ -190,13 +190,13 @@ for cond = 1:length(condition_events)
     end
 
     %
-    % STEP 5.1: Define trial structure
+    % STEP 6.1: Define trial structure
     %
 
     if ~isempty(label)
         conditionlabels = [conditionlabels; label]; % Append if not empty
     else
-        disp('Empty label detected, replacing with "Unknown".');
+        disp('Empty label detected, replacing with "Unknown!!!!".');
         conditionlabels = [conditionlabels; "Unknown"];
     end
 
@@ -206,7 +206,7 @@ for cond = 1:length(condition_events)
     ];
 
     %
-    % STEP 5.2: Generate Labels
+    % STEP 6.2: Generate Labels
     %
     
     % Loop over each start event and define a trial
@@ -223,7 +223,7 @@ for cond = 1:length(condition_events)
 end
 
 %
-% STEP 5.3: Extract Timestamps
+% STEP 6.3: Extract Timestamps
 %
 
 %% Get just the conditions, no trial level info
@@ -313,13 +313,16 @@ writematrix(epoch_trl, 'epoch_trl.csv');
 % STEP 8: Baseline Correction
 %
 
-% TASK: 15 seconds break
-% 20X 21X
-% TASK: I get warnings about no baseline correction so I added this
-S = struct();
+% Apply baseline correction to each epoch
+% Define a structure to hold the baseline correction parameters
+% S = struct();
+S = [];
 S.D = D;
-S.timewin = [0, 100];
-baseline_D = spm_eeg_bc(S);
+S.timewin = [2762.35, 2777.488];  % Set baseline window (start and end samples)
+D = spm_eeg_bc(S);  % Apply baseline correction
+
+disp('Baseline correction applied successfully.');
+
 
 
 
