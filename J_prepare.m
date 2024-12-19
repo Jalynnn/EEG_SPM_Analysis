@@ -7,10 +7,10 @@
 % to unknown, going down a path and eventually coming back to the same
 % conclusion that if we wanted to use all 7 labels, we would have to use
 % all 7 sets of cycles creating 7 unequal sets of trials and spm won't work
-% with datasets that are unequal hence the previous error: all trials sould
+% with datasets that are unequal hence the previous error: all trials should
 % have identical and positive lengths. 
 
-% What does this mean for us now. The ouptputs are all correct right now
+% What does this mean for us now. The outputs are all correct right now
 % and create a one line trl file with one label using conditional_label
 % from the beginning instead of the heavily modified conditionlabels. This
 % means that a lot of the code in this script is unnecessary and should

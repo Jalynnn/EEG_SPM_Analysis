@@ -2,6 +2,7 @@
 %D = spm_eeg_load('/spmeeg_P07BDF.mat'); % Load the newly epoch-processed file
 
 %% Step 2: Downsample to 250 Hz (if not already downsampled)
+D = modified_D;
 disp(D)
 
 if D.fsample > 250

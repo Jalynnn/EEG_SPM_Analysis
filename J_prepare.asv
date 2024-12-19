@@ -10,7 +10,7 @@
 % with datasets that are unequal hence the previous error: all trials sould
 % have identical and positive lengths. 
 
-% What does this mean for us now. The ouptputs are all correct right now
+% What does this mean for us now. The outputs are all correct right now
 % and create a one line trl file with one label using conditional_label
 % from the beginning instead of the heavily modified conditionlabels. This
 % means that a lot of the code in this script is unnecessary and should
