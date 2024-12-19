@@ -337,11 +337,15 @@ disp(trials);
 S_epochs = struct();
 S_epochs.D = D_bc;
 % This was here previously but I don't know if it's doing what we want it to
-trl = condition_timestamps;
+% trl = condition_timestamps;
 
 fs = D_bc.fsample;
 S_epochs.trl = trl;
-S_epochs.trl(:, 1:2) = round(S_epochs.trl(1, 1:2) * fs / 1000);
+S_epochs.trl(:, 1:2) = round(S_epochs.trl(:, 1:2) * fs / 1000);
+
+if size(S_epochs.trl, 1) == length(conditionlabels)
+    disp('True');
+end
 
 conditionlabels = cellstr(conditionlabels);
 size(conditionlabels)
