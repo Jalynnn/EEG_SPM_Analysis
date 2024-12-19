@@ -30,7 +30,7 @@ format shortG
 
 
 %
-% STEP 1: Load the EEG file & event data CSV
+%% STEP 1: Load the EEG file & event data CSV
 %
 
 % Load the SPM EEG file
@@ -43,7 +43,7 @@ event_data = readtable('C:/Users/Jalynn/Desktop/BDF_EEG_Files/P11/P11events_data
 
 
 %
-% STEP 2: Fix channel names
+%% STEP 2: Fix channel names
 %
 
 % Fix channel names for the first 3 EEG channels
@@ -86,7 +86,7 @@ end
 
 
 %
-% STEP 3: Remove all channels except the first 3, accel, ref, and ground
+%% STEP 3: Remove all channels except the first 3, accel, ref, and ground
 %
 
 % Identify the channels to keep
@@ -114,7 +114,7 @@ disp(D_cropped.chanlabels);
 
 
 %
-% STEP 4: Define the montage
+%% STEP 4: Define the montage
 %
 
 % Define montage matrix
@@ -164,7 +164,7 @@ disp('Applied montage successfully.');
 
 
 %
-% STEP 5: Define conditions for comparisons
+%% STEP 5: Define conditions for comparisons
 %
 
 % Define the event values we need for each condition
@@ -183,7 +183,7 @@ condition_labels = {"Condition 1"}; % MODIFY HERE (4/8)
 
 
 %
-% STEP 6: Fix the triggers
+%% STEP 6: Fix the triggers
 %
 
 % Time window for epochs (in milliseconds)
@@ -270,7 +270,7 @@ end
 
 
 %
-% STEP 7: Epoch our data into 1 second intervals (to match the engagement paper)
+%% STEP 7: Epoch our data into 1 second intervals (to match the engagement paper)
 %
 
 fprintf('Starting epoching process...\n');
@@ -325,7 +325,7 @@ writematrix(epoch_trl, 'epoch_trl.csv');
 
 
 %
-% STEP 8: Baseline Correction
+%% STEP 8: Baseline Correction
 %
 
 % Apply baseline correction to each epoch
@@ -344,7 +344,7 @@ disp('Baseline correction applied successfully.');
 
 
 %
-% STEP 9: Output
+%% STEP 9: Output
 %
 
 disp('TRL:');

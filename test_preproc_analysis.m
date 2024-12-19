@@ -1,20 +1,42 @@
-% Step 1: Load the SPM EEG file with epochs already defined
-%D = spm_eeg_load('/spmeeg_P07BDF.mat'); % Load the newly epoch-processed file
+%
+%% Step 1: Load the SPM EEG file with epochs already defined
+%
 
-%% Step 2: Downsample to 250 Hz (if not already downsampled)
+% This was completed in prepare.m
+% D = spm_eeg_load('/spmeeg_P07BDF.mat'); % Load the newly epoch-processed file
+
 D = modified_D;
 disp(D)
+
+
+
+
+%
+%% Step 2: Downsample to 250 Hz (if not already downsampled)
+%
 
 if D.fsample > 250
     S = struct('D', D, 'fsample_new', 250);
     D = spm_eeg_downsample(S);
 end
 
+
+
+
+%
 %% Step 3: Apply Bandpass Filter (0.1 Hz to 30 Hz)
+%
+
 S = struct('D', D, 'band', 'bandpass', 'freq', [0.1 30]);
 D = spm_eeg_filter(S);
 
+
+
+
+%
 %% Step 4: Artifact Rejection on the Defined Epochs
+%
+
 % Define methods for artifact rejection
 S = struct();
 S.D = D;
@@ -30,7 +52,13 @@ S.methods(2).settings.threshold = 200;   % Peak-to-peak threshold in µV
 % Apply artifact rejection using the defined methods
 D = spm_eeg_artefact(S);
 
+
+
+
+%
 %% Step 5: Calculate Power in Alpha and Theta Bands for Each Epoch
+%
+
 % Define the conditions to calculate ratios for
 condition_labels = {'Condition 1'};
 
