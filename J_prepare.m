@@ -203,9 +203,11 @@ for cond = 1:length(condition_events)
     % Loop over each start event and define a trial
     for i = 1:2:height(cond_table)
         if i == height(cond_table)-1
-            conditionlabels = [conditionlabels, append(label, "_TEST")];
+            appendedLabel = append(label, "_TEST");
+            % conditionlabels = [conditionlabels, append(label, "_TEST")];
+            conditionlabels = [conditionlabels, {appendedLabel}];
         else
-            conditionlabels = [conditionlabels, label];
+            conditionlabels = [conditionlabels, {label}];
         end
 
         % Store trial start, end, and offset
@@ -336,9 +338,13 @@ S_epochs = struct();
 S_epochs.D = D_bc;
 % This was here previously but I don't know if it's doing what we want it to
 trl = condition_timestamps;
+
+fs = D_bc.fsample;
 S_epochs.trl = trl;
+S_epochs.trl(:, 1:2) = round(S_epochs.trl(1, 1:2) * fs / 1000);
 
 conditionlabels = cellstr(conditionlabels);
+size(conditionlabels)
 S_epochs.conditionlabels = conditionlabels;
 
 % Background info
