@@ -171,7 +171,8 @@ poststim = 1000; % Time after the stimulus
 % Initialize an empty trial structure
 trials = []; % Store trial definitions
 trl = []; % Store trial timing (start, end, offset)
-conditionlabels = string([]); % Initialize as an empty string array
+% conditionlabels = string([]); % Initialize as an empty string array
+conditionlabels = {};
 
 % Loop through each condition to define trial events
 for cond = 1:length(condition_events)
@@ -333,14 +334,24 @@ disp(trials);
 
 % Set up the SPM structure
 S_epochs = struct();
-S_.D = D;
+S_epochs.D = D_bc;
 % This was here previously but I don't know if it's doing what we want it to
 trl = condition_timestamps;
-S.trl = trl;
-S.conditionlabels = conditionlabels;
-modified_D = spm_eeg_epochs(S);
+S_epochs.trl = trl;
 
+conditionlabels = cellstr(conditionlabels);
+S_epochs.conditionlabels = conditionlabels;
+
+% Background info
+% Previously we had a warning saying: "There was no baseline specified. The
+% data is not baseline-correct." Since I am using spm_eeg_bc above, we are
+% successfully supplying the baseline correction, but spm_eeg_epochs has
+% its own optional baseline. I turned off the optional baseline here.
+S_epochs.bc = 0;
+
+modified_D = spm_eeg_epochs(S_epochs);
 modified_D.save();
+
 modified_D_1 = modified_D; % MODIFY HERE (5/8)
 trl_1 = trl; % MODIFY HERE (6/8)
 
