@@ -318,6 +318,7 @@ writematrix(epoch_trl, 'epoch_trl.csv');
 % S = struct();
 S = [];
 S.D = D;
+S.Dbaseln = D;
 S.timewin = [2762.35, 2777.488];  % Set baseline window (start and end samples)
 D = spm_eeg_bc(S);  % Apply baseline correction
 
