@@ -9,7 +9,8 @@
 % For some reason, when I try to remove condition 2 and 3 only theta shows
 % up in the visuals
 % condition_labels = {'Condition 1'};
-condition_labels = {'Condition 1', 'Condition 2', 'Condition 3'};
+condition_labels = {'Condition 1', 'Condition 2'};
+% condition_labels = {'Condition 1', 'Condition 2', 'Condition 3'};
 
 % Sampling frequency
 fs = D.fsample;

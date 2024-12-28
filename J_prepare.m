@@ -68,8 +68,11 @@ end
 
 % Find reference and ground channels
 % TASK: 'REF' AND 'GND' ???
-ref_channel = find(strcmp(chanlabels(D_original), 'REF')); % Adjust 'REF' to actual label if different
-ground_channel = find(strcmp(chanlabels(D_original), 'GND')); % Adjust 'GND' to actual label if different
+% ref_channel = find(strcmp(chanlabels(D_original), 'REF')); % Adjust 'REF' to actual label if different
+ref_channel = find(strcmp(chanlabels(D_original), 'F7')); % Adjust 'REF' to actual label if different
+
+% ground_channel = find(strcmp(chanlabels(D_original), 'GND')); % Adjust 'GND' to actual label if different
+ground_channel = find(strcmp(chanlabels(D_original), 'F9')); % Adjust 'GND' to actual label if different
 
 % Rename reference and ground channels
 if ~isempty(ref_channel)
@@ -354,6 +357,8 @@ disp(conditionlabels);
 disp('Trials Structure');
 disp(trials);
 
+
+
 % Set up the SPM structure
 S_epochs = struct();
 S_epochs.D = D_bc;
@@ -385,14 +390,36 @@ modified_D.save();
 modified_D_1 = modified_D; % MODIFY HERE (5/8)
 trl_1 = trl; % MODIFY HERE (6/8)
 
+
+
 % Set up the SPM structure for epoching
 % epoch_S = struct();
-% epoch_S.D = D;
-% S.trl = epoch_trl;
 
-% S.conditionlabels = conditionlabels;
-% epoch_D = spm_eeg_epochs(S);
+% epoch_S.D = D_bc;
+% epoch_S.trl = epoch_trl;
+% epoch_S.conditionlabels = conditionlabels;
+
+% epoch_D = spm_eeg_epochs(epoch_S);
 
 % epoch_D.save();
 % epoch_D_1 = epoch_D; % MODIFY HERE (7/8)
 % epoch_trl_1 = epoch_trl; % MODIFY HERE (8/8)
+
+
+
+%
+%% STEP 10: Save Files in New Folder
+%
+
+% Define the parent directory for your project
+preparedDataDir = 'C:/Users/Jalynn/Documents/GitHub/EEG_SPM_Analysis/Prepared Data/P11';
+
+save(fullfile(preparedDataDir, 'modified_D_1.mat'), 'modified_D_1');
+
+writematrix(trl_1, fullfile(preparedDataDir, 'trl_1.csv'));
+
+% save(fullfile(preparedDataDir, 'epoch_D_1.mat'), 'epoch_D_1');
+
+% writematrix(epoch_trl_1, fullfile(preparedDataDir, 'epoch_trl_1.csv'));
+
+disp('Files saved successfully in the Prepared Data folder.');
