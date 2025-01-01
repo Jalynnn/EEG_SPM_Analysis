@@ -5,7 +5,10 @@
 % This was completed in prepare.m
 % D = spm_eeg_load('/spmeeg_P07BDF.mat'); % Load the newly epoch-processed file
 
-D = modified_D;
+% MODIFY HERE (1/4)
+% D = epoch_D_1; % continue without epochs for now
+D = modified_D_2;
+
 disp(D)
 
 
@@ -60,7 +63,7 @@ D = spm_eeg_artefact(S);
 %
 
 % Define the conditions to calculate ratios for
-condition_labels = {'Condition 1'};
+condition_labels = {'Condition 2'}; % MODIFY HERE (2/4)
 
 % Frequency bands for alpha and theta
 alpha_band = [8 13];
@@ -129,3 +132,29 @@ end
 for cond = 1:length(condition_labels)
     fprintf('%s Alpha-Theta Ratio: %.3f\n', condition_labels{cond}, alpha_theta_ratios(cond));
 end
+
+
+
+
+% Save to a text file
+
+% MODIFY HERE (3/4)
+% Specify the directory where the file should be saved
+preparedDataDir = 'C:/Users/Jalynn/Documents/GitHub/EEG_SPM_Analysis/Prepared Data/P11';
+
+% MODIFY HERE (4/4)
+% Combine the directory path with the desired file name
+file_path = fullfile(preparedDataDir, 'MD2_alpha_theta_ratios_output.txt');
+
+% Open the file for writing
+fileID = fopen(file_path, 'w');
+
+% Display the alpha-theta ratio for each condition and write to the file
+for cond = 1:length(condition_labels)
+    fprintf(fileID, '%s Alpha-Theta Ratio: %.3f\n', condition_labels{cond}, alpha_theta_ratios(cond));
+end
+
+% Close the file
+fclose(fileID);
+
+
