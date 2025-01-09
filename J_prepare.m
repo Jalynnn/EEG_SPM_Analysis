@@ -172,14 +172,14 @@ disp('Applied montage successfully.');
 
 % Define the event values we need for each condition
 condition_events = { % MODIFY HERE (3/14)
-    [42, 12];  % Condition 1 / LL
-    % [43, 13];  % Condition 2 / LH
+    % [42, 12];  % Condition 1 / LL
+    [43, 13];  % Condition 2 / LH
     % [44, 14];  % Condition 3 / HL
     % [46, 16];  % Condition 4 / HH
 };
 
 % Define the condition label
-condition_labels = {"Condition 1"}; % MODIFY HERE (4/14)
+condition_labels = {"Condition 2"}; % MODIFY HERE (4/14)
 % condition_labels = {"Condition 1", "Condition 2", "Condition 3", "Condition 4"};
 
 
@@ -387,8 +387,8 @@ S_epochs.bc = 0;
 modified_D = spm_eeg_epochs(S_epochs);
 modified_D.save();
 
-modified_D_1 = modified_D; % MODIFY HERE (6/14)
-trl_1 = trl; % MODIFY HERE (7/14)
+modified_D_2 = modified_D; % MODIFY HERE (6/14)
+trl_2 = trl; % MODIFY HERE (7/14)
 
 
 
@@ -402,8 +402,8 @@ epoch_S.conditionlabels = conditionlabels;
 epoch_D = spm_eeg_epochs(epoch_S);
 
 epoch_D.save();
-epoch_D_1 = epoch_D; % MODIFY HERE (8/14)
-epoch_trl_1 = epoch_trl; % MODIFY HERE (9/14)
+epoch_D_2 = epoch_D; % MODIFY HERE (8/14)
+epoch_trl_2 = epoch_trl; % MODIFY HERE (9/14)
 
 
 
@@ -414,12 +414,12 @@ epoch_trl_1 = epoch_trl; % MODIFY HERE (9/14)
 % Define the parent directory for your project
 preparedDataDir = 'C:/Users/Jalynn/Documents/GitHub/EEG_SPM_Analysis/Prepared Data/P14'; % MODIFY HERE (10/14)
 
-save(fullfile(preparedDataDir, 'modified_D_1.mat'), 'modified_D_1'); % MODIFY HERE (11/14)
+save(fullfile(preparedDataDir, 'modified_D_2.mat'), 'modified_D_2'); % MODIFY HERE (11/14)
 
-writematrix(trl_1, fullfile(preparedDataDir, 'trl_1.csv')); % MODIFY HERE (12/14)
+writematrix(trl_2, fullfile(preparedDataDir, 'trl_2.csv')); % MODIFY HERE (12/14)
 
-save(fullfile(preparedDataDir, 'epoch_D_1.mat'), 'epoch_D_1'); % MODIFY HERE (13/14)
+save(fullfile(preparedDataDir, 'epoch_D_2.mat'), 'epoch_D_2'); % MODIFY HERE (13/14)
 
-writematrix(epoch_trl_1, fullfile(preparedDataDir, 'epoch_trl_1.csv')); % MODIFY HERE (14/14)
+writematrix(epoch_trl_2, fullfile(preparedDataDir, 'epoch_trl_2.csv')); % MODIFY HERE (14/14)
 
 disp('Files saved successfully in the Prepared Data folder.');
