@@ -6,8 +6,8 @@
 % D = spm_eeg_load('/spmeeg_P07BDF.mat'); % Load the newly epoch-processed file
 
 % MODIFY HERE (1/4)
-% D = epoch_D_1; % continue without epochs for now
-D = modified_D_2;
+D = epoch_D_2; % continue without epochs for now
+% D = modified_D_2;
 
 disp(D)
 
