@@ -1,4 +1,4 @@
-%
+t%
 %% Step 0: Load the epoched EEG data file with labeled conditions
 %
 

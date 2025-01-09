@@ -1,7 +1,9 @@
 % Sample data: Alpha-Theta Ratios for all participants across conditions
 % Replace these arrays with your actual participant data for both conditions.
-condition_1 = [0.080, 0.090, 0.085, 0.078, 0.082, 0.088, 0.084];  % Condition 1 Alpha-Theta Ratios (all participants)
-condition_2 = [0.160, 0.165, 0.155, 0.158, 0.162, 0.155, 0.160];  % Condition 2 Alpha-Theta Ratios (all participants)
+
+% P11, P12, P13, & P14
+condition_1 = [0.080, 0.609, 0.531, 0.348];  % Condition 1 Alpha-Theta Ratios (all participants)
+condition_2 = [0.160, 0.454, 0.492, 0.382];  % Condition 2 Alpha-Theta Ratios (all participants)
 
 % Step 1: Perform a One-Way Repeated Measures ANOVA
 % Create a table with the alpha-theta ratios for both conditions

@@ -7,7 +7,7 @@
 
 % MODIFY HERE (1/4)
 % D = epoch_D_1; % continue without epochs for now
-D = modified_D_2;
+D = modified_D_1;
 
 disp(D)
 
@@ -63,7 +63,7 @@ D = spm_eeg_artefact(S);
 %
 
 % Define the conditions to calculate ratios for
-condition_labels = {'Condition 2'}; % MODIFY HERE (2/4)
+condition_labels = {'Condition 1'}; % MODIFY HERE (2/4)
 
 % Frequency bands for alpha and theta
 alpha_band = [8 13];
@@ -140,11 +140,11 @@ end
 
 % MODIFY HERE (3/4)
 % Specify the directory where the file should be saved
-preparedDataDir = 'C:/Users/Jalynn/Documents/GitHub/EEG_SPM_Analysis/Prepared Data/P11';
+preparedDataDir = 'C:/Users/Jalynn/Documents/GitHub/EEG_SPM_Analysis/Prepared Data/P14';
 
 % MODIFY HERE (4/4)
 % Combine the directory path with the desired file name
-file_path = fullfile(preparedDataDir, 'MD2_alpha_theta_ratios_output.txt');
+file_path = fullfile(preparedDataDir, 'MD1_alpha_theta_ratios_output.txt');
 
 % Open the file for writing
 fileID = fopen(file_path, 'w');

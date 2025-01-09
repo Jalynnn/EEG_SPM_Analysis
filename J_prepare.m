@@ -34,10 +34,10 @@ format shortG
 %
 
 % Load the SPM EEG file
-D_original = spm_eeg_load('C:/Users/Jalynn/Desktop/BDF_EEG_Files/P11/spmeeg_P11BDF.mat'); % MODIFY HERE (1/13)
+D_original = spm_eeg_load('C:/Users/Jalynn/Desktop/BDF_EEG_Files/P14/spmeeg_P14BDF.mat'); % MODIFY HERE (1/14)
 
 % Load the events from CSV
-event_data = readtable('C:/Users/Jalynn/Desktop/BDF_EEG_Files/P11/P11events_data.csv'); % MODIFY HERE (2/13)
+event_data = readtable('C:/Users/Jalynn/Desktop/BDF_EEG_Files/P14/P14events_data.csv'); % MODIFY HERE (2/14)
 
 
 
@@ -171,15 +171,15 @@ disp('Applied montage successfully.');
 %
 
 % Define the event values we need for each condition
-condition_events = { % MODIFY HERE (3/13)
-    % [42, 12];  % Condition 1 / LL
-    [43, 13];  % Condition 2 / LH
+condition_events = { % MODIFY HERE (3/14)
+    [42, 12];  % Condition 1 / LL
+    % [43, 13];  % Condition 2 / LH
     % [44, 14];  % Condition 3 / HL
     % [46, 16];  % Condition 4 / HH
 };
 
 % Define the condition label
-condition_labels = {"Condition 2"}; % MODIFY HERE (4/13)
+condition_labels = {"Condition 1"}; % MODIFY HERE (4/14)
 % condition_labels = {"Condition 1", "Condition 2", "Condition 3", "Condition 4"};
 
 
@@ -337,7 +337,7 @@ writematrix(epoch_trl, 'epoch_trl.csv');
 S_bc = [];
 S_bc.D = D_montaged;
 S_bc.Dbaseln = D_montaged;
-S_bc.timewin = [2762.35, 2777.488];  % Set baseline window (start and end samples) % MODIFY HERE (5/13)
+S_bc.timewin = [1606.594, 1621.704]; % Set baseline window (start and end samples) % MODIFY HERE (5/14)
 D_bc = spm_eeg_bc(S_bc);  % Apply baseline correction
 
 disp('Baseline correction applied successfully.');
@@ -387,8 +387,8 @@ S_epochs.bc = 0;
 modified_D = spm_eeg_epochs(S_epochs);
 modified_D.save();
 
-modified_D_2 = modified_D; % MODIFY HERE (6/13)
-trl_2 = trl; % MODIFY HERE (7/13)
+modified_D_1 = modified_D; % MODIFY HERE (6/14)
+trl_1 = trl; % MODIFY HERE (7/14)
 
 
 
@@ -402,8 +402,8 @@ epoch_S.conditionlabels = conditionlabels;
 epoch_D = spm_eeg_epochs(epoch_S);
 
 epoch_D.save();
-epoch_D_2 = epoch_D; % MODIFY HERE (8/13)
-epoch_trl_2 = epoch_trl; % MODIFY HERE (9/13)
+epoch_D_1 = epoch_D; % MODIFY HERE (8/14)
+epoch_trl_1 = epoch_trl; % MODIFY HERE (9/14)
 
 
 
@@ -412,14 +412,14 @@ epoch_trl_2 = epoch_trl; % MODIFY HERE (9/13)
 %
 
 % Define the parent directory for your project
-preparedDataDir = 'C:/Users/Jalynn/Documents/GitHub/EEG_SPM_Analysis/Prepared Data/P11';
+preparedDataDir = 'C:/Users/Jalynn/Documents/GitHub/EEG_SPM_Analysis/Prepared Data/P14'; % MODIFY HERE (10/14)
 
-save(fullfile(preparedDataDir, 'modified_D_2.mat'), 'modified_D_2'); % MODIFY HERE (10/13)
+save(fullfile(preparedDataDir, 'modified_D_1.mat'), 'modified_D_1'); % MODIFY HERE (11/14)
 
-writematrix(trl_2, fullfile(preparedDataDir, 'trl_2.csv')); % MODIFY HERE (11/13)
+writematrix(trl_1, fullfile(preparedDataDir, 'trl_1.csv')); % MODIFY HERE (12/14)
 
-save(fullfile(preparedDataDir, 'epoch_D_2.mat'), 'epoch_D_2'); % MODIFY HERE (12/13)
+save(fullfile(preparedDataDir, 'epoch_D_1.mat'), 'epoch_D_1'); % MODIFY HERE (13/14)
 
-writematrix(epoch_trl_2, fullfile(preparedDataDir, 'epoch_trl_2.csv')); % MODIFY HERE (13/13)
+writematrix(epoch_trl_1, fullfile(preparedDataDir, 'epoch_trl_1.csv')); % MODIFY HERE (14/14)
 
 disp('Files saved successfully in the Prepared Data folder.');
