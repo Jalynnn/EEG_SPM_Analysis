@@ -7,7 +7,7 @@
 
 % MODIFY HERE (1/4)
 D = epoch_D_2; % continue without epochs for now
-% D = continuous_D_2;
+% D = test_continuous_D_2;
 
 disp(D)
 
@@ -247,10 +247,10 @@ file_path = fullfile(preparedDataDir, 'MD2_alpha_theta_ratios_output.txt');
 % Open the file for writing
 fileID = fopen(file_path, 'w');
 
-% Display the alpha-theta ratio for each condition and write to the file
-for cond = 1:length(condition_labels)
-    fprintf(fileID, '%s Alpha-Theta Ratio: %.3f\n', condition_labels{cond}, alpha_theta_ratios(cond));
-end
+% % Display the alpha-theta ratio for each condition and write to the file
+% for cond = 1:length(condition_labels)
+%     fprintf(fileID, '%s Alpha-Theta Ratio: %.3f\n', condition_labels{cond}, alpha_theta_ratios(cond));
+% end
 
 % Close the file
 fclose(fileID);

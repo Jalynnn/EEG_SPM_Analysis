@@ -532,42 +532,51 @@ disp('Testing Timestamps:');
 disp(testing_timestamps);
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% if D_bc.fsample > 250
+%     S = struct('D', D_bc, 'fsample_new', 250);
+%     D_bc = spm_eeg_downsample(S);
+% end
+% S = struct('D', D_bc, 'band', 'bandpass', 'freq', [0.1 30]);
+% D_bc = spm_eeg_filter(S);
+
+
 %
 % STEP 9.2: continuous_D
 %
 
-train_D_bc = D_bc;
-test_D_bc = D_bc;
-
-cont_S = struct();
-cont_S.D = D_bc;
-
-% Recall TRL is 7 lines of start and end times
-% We can't use this because they are not equal times
-% condition vs. train vs. test
-cont_S.trl = condition_timestamps;
-eval(sprintf('continuous_trl_%d = condition_timestamps;', condition_number));
-
-% Convert ms to samples
-fs = D_bc.fsample;
-cont_S.trl(:, 1:2) = round(cont_S.trl(:, 1:2) * fs / 1000);
-
-% train vs. test
-cont_S.conditionlabels = {sprintf('Condition %d', condition_number)};
-
-cont_S.bc = 0;
-
-continuous_D = spm_eeg_epochs(cont_S);
-continuous_D.save();
-
-eval(sprintf('continuous_D_%d = continuous_D;', condition_number));
-
-
-%
-% STEP 9.2.1: train_continuous_D
-%
-
-
+% train_D_bc = D_bc;
+% test_D_bc = D_bc;
+% 
+% cont_S = struct();
+% cont_S.D = D_bc;
+% 
+% % Recall TRL is 7 lines of start and end times
+% % We can't use this because they are not equal times
+% % condition vs. train vs. test
+% cont_S.trl = condition_timestamps;
+% eval(sprintf('continuous_trl_%d = condition_timestamps;', condition_number));
+% 
+% % Convert ms to samples
+% fs = D_bc.fsample;
+% cont_S.trl(:, 1:2) = round(cont_S.trl(:, 1:2) * fs / 1000);
+% 
+% % train vs. test
+% cont_S.conditionlabels = {sprintf('Condition %d', condition_number)};
+% 
+% cont_S.bc = 0;
+% 
+% continuous_D = spm_eeg_epochs(cont_S);
+% continuous_D.save();
+% 
+% eval(sprintf('continuous_D_%d = continuous_D;', condition_number));
+% 
+% 
+% %
+% % STEP 9.2.1: train_continuous_D
+% %
+% 
+% 
 % train_cont_S = struct();
 % train_cont_S.D = train_D_bc;
 % 
@@ -590,13 +599,13 @@ eval(sprintf('continuous_D_%d = continuous_D;', condition_number));
 % train_continuous_D.save();
 % 
 % eval(sprintf('train_continuous_D_%d = train_continuous_D;', condition_number));
-
-
-%
-% STEP 9.2.2: test_continuous_D
-%
-
-
+% 
+% 
+% %
+% % STEP 9.2.2: test_continuous_D
+% %
+% 
+% 
 % test_cont_S = struct();
 % test_cont_S.D = test_D_bc;
 % 
@@ -619,27 +628,27 @@ eval(sprintf('continuous_D_%d = continuous_D;', condition_number));
 % test_continuous_D.save();
 % 
 % eval(sprintf('test_continuous_D_%d = test_continuous_D;', condition_number));
-
-
-%
-% STEP 9.3: epoch_D
-%
-
+% 
+% 
+% %
+% % STEP 9.3: epoch_D
+% %
+% 
 
 fprintf('Starting epoching D...\n');
 
-epoch_S = struct();
-epoch_S.D = D_bc;
-
-epoch_S.trl = epoch_trl;
-epoch_S.conditionlabels = {sprintf('Condition %d', condition_number)};
-
-epoch_S.bc = 0;
-epoch_D = spm_eeg_epochs(epoch_S);
-
-epoch_D.save();
-eval(sprintf('epoch_D_%d = epoch_D;', condition_number));
-eval(sprintf('epoch_trl_%d = epoch_trl;', condition_number));
+% epoch_S = struct();
+% epoch_S.D = D_bc;
+% 
+% epoch_S.trl = epoch_trl;
+% epoch_S.conditionlabels = {sprintf('Condition %d', condition_number)};
+% 
+% epoch_S.bc = 0;
+% epoch_D = spm_eeg_epochs(epoch_S);
+% 
+% epoch_D.save();
+% eval(sprintf('epoch_D_%d = epoch_D;', condition_number));
+% eval(sprintf('epoch_trl_%d = epoch_trl;', condition_number));
 
 
 %
@@ -664,19 +673,19 @@ eval(sprintf('epoch_trl_%d = epoch_trl;', condition_number));
 % STEP 9.3.2: test_epoch_D
 %
 
-% 
-% test_epoch_S = struct();
-% test_epoch_S.D = D_bc;
-% 
-% test_epoch_S.trl = test_epoch_trl;
-% test_epoch_S.conditionlabels = {sprintf('Condition %d_TEST', condition_number)};
-% 
-% test_epoch_S.bc = 0;
-% test_epoch_D = spm_eeg_epochs(test_epoch_S);
-% 
-% test_epoch_D.save();
-% eval(sprintf('test_epoch_D_%d = test_epoch_D;', condition_number));
-% eval(sprintf('test_epoch_trl_%d = test_epoch_trl;', condition_number));
+
+test_epoch_S = struct();
+test_epoch_S.D = D_bc;
+
+test_epoch_S.trl = test_epoch_trl;
+test_epoch_S.conditionlabels = {sprintf('Condition %d_TEST', condition_number)};
+
+test_epoch_S.bc = 0;
+test_epoch_D = spm_eeg_epochs(test_epoch_S);
+
+test_epoch_D.save();
+eval(sprintf('test_epoch_D_%d = test_epoch_D;', condition_number));
+eval(sprintf('test_epoch_trl_%d = test_epoch_trl;', condition_number));
 
 
 

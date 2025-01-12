@@ -1,0 +1,2 @@
+Condition 2 Pz Alpha / Fz Theta Ratio: 0.234
+Condition 2 Beta / (Alpha + Theta) Ratio (All Channels): 0.154

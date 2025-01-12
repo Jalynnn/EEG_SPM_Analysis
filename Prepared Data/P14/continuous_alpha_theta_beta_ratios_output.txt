@@ -1,0 +1,2 @@
+Pz Alpha / Fz Theta Ratio: 0.234
+Beta / (Alpha + Theta) Ratio (All Channels): 0.154
