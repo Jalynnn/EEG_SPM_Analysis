@@ -96,59 +96,54 @@ cont_theta_power = [];
 [pxx, f] = pwelch(data', [], [], [], fs);
 
 % Find indices corresponding to the defined frequency bands
-cont_alpha_idx = (f >= alpha_band(1)) & (f <= alpha_band(2));
-cont_theta_idx = (f >= theta_band(1)) & (f <= theta_band(2));
-cont_beta_idx = (f >= beta_band(1)) & (f <= beta_band(2));
+alpha_idx = (f >= alpha_band(1)) & (f <= alpha_band(2));
+theta_idx = (f >= theta_band(1)) & (f <= theta_band(2));
+beta_idx = (f >= beta_band(1)) & (f <= beta_band(2));
 
 % Compute power for specific channels and all channels
 if any(strcmp(D.chanlabels, 'Pz')) && any(strcmp(D.chanlabels, 'Fz'))
     % Alpha power for Pz channel
-    cont_pz_alpha_power = mean(pxx(cont_alpha_idx, strcmp(D.chanlabels, 'Pz')));
+    cont_pz_alpha_power = mean(pxx(alpha_idx, strcmp(D.chanlabels, 'Pz')));
     % Theta power for Fz channel
-    cont_fz_theta_power = mean(pxx(cont_theta_idx, strcmp(D.chanlabels, 'Fz')));
+    cont_fz_theta_power = mean(pxx(theta_idx, strcmp(D.chanlabels, 'Fz')));
 else
     error('Pz or Fz channel not found in the data.');
 end
 
 % Compute mean power for beta, alpha, and theta across all channels
-cont_beta_power = mean(pxx(cont_beta_idx, :), 'all'); 
-cont_alpha_power = mean(pxx(cont_alpha_idx, :), 'all'); 
-cont_theta_power = mean(pxx(cont_theta_idx, :), 'all'); 
+cont_beta_power = mean(pxx(beta_idx, :), 'all'); 
+cont_alpha_power = mean(pxx(alpha_idx, :), 'all'); 
+cont_theta_power = mean(pxx(theta_idx, :), 'all'); 
 
 % Calculate the Pz Alpha / Fz Theta ratio
 if ~isempty(cont_pz_alpha_power) && ~isempty(cont_fz_theta_power) && cont_fz_theta_power > 0
-    cont_pz_alpha_fz_theta_ratio = cont_pz_alpha_power / cont_fz_theta_power;
+    pz_alpha_fz_theta_ratio = cont_pz_alpha_power / cont_fz_theta_power;
 else
-    cont_pz_alpha_fz_theta_ratio = NaN;
+    pz_alpha_fz_theta_ratio = NaN;
 end
 
 % Calculate Beta / (Alpha + Theta) ratio averaged across all channels
 if ~isempty(cont_beta_power) && ~isempty(cont_alpha_power) && ~isempty(cont_theta_power) && (cont_alpha_power + cont_theta_power > 0)
-    cont_beta_over_alpha_theta_ratio = cont_beta_power / (cont_alpha_power + cont_theta_power);
+    beta_over_alpha_theta_ratio = cont_beta_power / (cont_alpha_power + cont_theta_power);
 else
-    cont_beta_over_alpha_theta_ratio = NaN;
+    beta_over_alpha_theta_ratio = NaN;
 end
 
 % Display results
-fprintf('Pz Alpha / Fz Theta Ratio: %.3f\n', cont_pz_alpha_fz_theta_ratio);
-fprintf('Beta / (Alpha + Theta) Ratio (All Channels): %.3f\n', cont_beta_over_alpha_theta_ratio);
+fprintf('Pz Alpha / Fz Theta Ratio: %.3f\n', pz_alpha_fz_theta_ratio);
+fprintf('Beta / (Alpha + Theta) Ratio (All Channels): %.3f\n', beta_over_alpha_theta_ratio);
 
 % Save results to a file
 output_file = fullfile(preparedDataDir, 'continuous_alpha_theta_beta_ratios_output.txt');
 fileID = fopen(output_file, 'w');
-fprintf(fileID, 'Pz Alpha / Fz Theta Ratio: %.3f\n', cont_pz_alpha_fz_theta_ratio);
-fprintf(fileID, 'Beta / (Alpha + Theta) Ratio (All Channels): %.3f\n', cont_beta_over_alpha_theta_ratio);
+fprintf(fileID, 'Pz Alpha / Fz Theta Ratio: %.3f\n', pz_alpha_fz_theta_ratio);
+fprintf(fileID, 'Beta / (Alpha + Theta) Ratio (All Channels): %.3f\n', beta_over_alpha_theta_ratio);
 fclose(fileID);
 
 
 % epoched data 
 
-% Sampling frequency
-fs = D.fsample;
 
-% Initialize variables for storing results
-pz_alpha_fz_theta_ratios = zeros(1, length(condition_labels));
-beta_over_alpha_theta_ratios = zeros(1, length(condition_labels));
 
 % Loop over each condition
 for cond = 1:length(condition_labels)
@@ -157,19 +152,19 @@ for cond = 1:length(condition_labels)
 
     if isempty(epoch_indices)
         fprintf('No epochs found for %s. Setting ratios to NaN.\n', condition_labels{cond});
+        alpha_theta_ratios(cond) = NaN;
         pz_alpha_fz_theta_ratios(cond) = NaN;
         beta_over_alpha_theta_ratios(cond) = NaN;
         continue;
     end
 
     % Initialize storage for Pz alpha, Fz theta, beta, alpha, and theta power
-    ep_pz_alpha_power = [];
-    ep_fz_theta_power = [];
-    ep_beta_power = [];
-    ep_alpha_power = [];
-    ep_theta_power = [];
+    cont_pz_alpha_power = [];
+    cont_fz_theta_power = [];
+    cont_beta_power = [];
+    cont_alpha_power = [];
+    cont_theta_power = [];
 
-    % Process each epoch for the current condition
     for e = 1:length(epoch_indices)
         epoch_data = D(:, :, epoch_indices(e)); % Get epoch data
 
@@ -177,38 +172,32 @@ for cond = 1:length(condition_labels)
             continue;
         end
 
-        % Calculate power spectral density (PSD)
+        % Calculate power spectral density
         [pxx, f] = pwelch(epoch_data', [], [], [], fs);
 
-        % Extract indices corresponding to the defined frequency bands
-        ep_alpha_idx = (f >= alpha_band(1)) & (f <= alpha_band(2));
-        ep_theta_idx = (f >= theta_band(1)) & (f <= theta_band(2));
-        ep_beta_idx = (f >= beta_band(1)) & (f <= beta_band(2));
+        % Extract indices for bands
+        alpha_idx = (f >= alpha_band(1)) & (f <= alpha_band(2));
+        theta_idx = (f >= theta_band(1)) & (f <= theta_band(2));
+        beta_idx = (f >= beta_band(1)) & (f <= beta_band(2));
 
-        % Calculate power for specific channels and all channels
-        if any(strcmp(D.chanlabels, 'Pz')) && any(strcmp(D.chanlabels, 'Fz'))
-            % Alpha power for Pz channel
-            ep_pz_alpha_power = [ep_pz_alpha_power, mean(pxx(ep_alpha_idx, strcmp(D.chanlabels, 'Pz')))];
-            % Theta power for Fz channel
-            ep_fz_theta_power = [ep_fz_theta_power, mean(pxx(ep_theta_idx, strcmp(D.chanlabels, 'Fz')))];
-        end
-
-        % Compute power for beta, alpha, and theta across all channels
-        ep_beta_power = [ep_beta_power, mean(pxx(ep_beta_idx, :), 'all')];
-        ep_alpha_power = [ep_alpha_power, mean(pxx(ep_alpha_idx, :), 'all')];
-        ep_theta_power = [ep_theta_power, mean(pxx(ep_theta_idx, :), 'all')];
+        % Channel-wise power
+        cont_pz_alpha_power = [cont_pz_alpha_power, mean(pxx(alpha_idx, strcmp(D.chanlabels, 'Pz')))];
+        cont_fz_theta_power = [cont_fz_theta_power, mean(pxx(theta_idx, strcmp(D.chanlabels, 'Fz')))];
+        cont_beta_power = [cont_beta_power, mean(pxx(beta_idx, :), 'all')];
+        cont_alpha_power = [cont_alpha_power, mean(pxx(alpha_idx, :), 'all')];
+        cont_theta_power = [cont_theta_power, mean(pxx(theta_idx, :), 'all')];
     end
 
     % Calculate Pz Alpha / Fz Theta ratio
-    if ~isempty(ep_pz_alpha_power) && ~isempty(ep_fz_theta_power) && mean(ep_fz_theta_power) > 0
-        pz_alpha_fz_theta_ratios(cond) = mean(ep_pz_alpha_power) / mean(ep_fz_theta_power);
+    if ~isempty(cont_pz_alpha_power) && ~isempty(cont_fz_theta_power)
+        pz_alpha_fz_theta_ratios(cond) = mean(cont_pz_alpha_power) / mean(cont_fz_theta_power);
     else
         pz_alpha_fz_theta_ratios(cond) = NaN;
     end
 
-    % Calculate Beta / (Alpha + Theta) ratio averaged across all channels
-    if ~isempty(ep_beta_power) && ~isempty(ep_alpha_power) && ~isempty(ep_theta_power) && (mean(ep_alpha_power) + mean(ep_theta_power) > 0)
-        beta_over_alpha_theta_ratios(cond) = mean(ep_beta_power) / (mean(ep_alpha_power) + mean(ep_theta_power));
+    % Calculate Beta / (Alpha + Theta) averaged across Fz, Cz, Pz
+    if ~isempty(cont_beta_power) && ~isempty(cont_alpha_power) && ~isempty(cont_theta_power)
+        beta_over_alpha_theta_ratios(cond) = mean(cont_beta_power) / (mean(cont_alpha_power) + mean(cont_theta_power));
     else
         beta_over_alpha_theta_ratios(cond) = NaN;
     end
@@ -221,15 +210,13 @@ for cond = 1:length(condition_labels)
 end
 
 % Save results to a file
-output_file = fullfile(preparedDataDir, 'epoched_alpha_theta_beta_ratios_output.txt');
+output_file = fullfile(preparedDataDir, 'alpha_theta_beta_ratios_output.txt');
 fileID = fopen(output_file, 'w');
 for cond = 1:length(condition_labels)
     fprintf(fileID, '%s Pz Alpha / Fz Theta Ratio: %.3f\n', condition_labels{cond}, pz_alpha_fz_theta_ratios(cond));
     fprintf(fileID, '%s Beta / (Alpha + Theta) Ratio (All Channels): %.3f\n', condition_labels{cond}, beta_over_alpha_theta_ratios(cond));
 end
 fclose(fileID);
-
-
 
 
 
