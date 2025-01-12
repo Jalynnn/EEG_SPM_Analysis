@@ -11,9 +11,9 @@ format shortG
 %% MODIFY HERE
 %
 
-base_path = 'C:/Users/Jalynn/Desktop/BDF_EEG_Files/P13';
-spm_file = fullfile(base_path, 'spmeeg_P13BDF.mat');
-event_file = fullfile(base_path, 'P13events_data.csv');
+base_path = 'C:/Users/Jalynn/Desktop/BDF_EEG_Files/P14';
+spm_file = fullfile(base_path, 'spmeeg_P14BDF.mat');
+event_file = fullfile(base_path, 'P14events_data.csv');
 condition_number = 2; % Either 1 or 2
 baseline_window = [1606.594, 1621.704]; % Will automate soon
 preparedDataDir = 'C:/Users/Jalynn/Documents/GitHub/EEG_SPM_Analysis/Prepared Data/P14';
@@ -328,7 +328,7 @@ end
 
 
 %
-%% STEP 7.1: Epoch our data for complete trial 1-7
+%% STEP 7.1: epoch our data for complete trial 1-7
 %
 
 
@@ -378,7 +378,7 @@ end
 
 
 %
-%% STEP 7.2: Epoch our data for training trials 1-6
+%% STEP 7.2: epoch our data for complete trial 1-6
 %
 
 
@@ -399,7 +399,7 @@ else
     error('No condition timestamps found. Cannot calculate recording duration.');
 end
 
-% new trl for 1 second epoching - All 7 trials
+% new trl for 1 second epoching - 6 trials
 train_epoch_trl = [];
 
 % Generate 1 second epoch intervals
@@ -418,12 +418,12 @@ end
 if isempty(train_epoch_trl)
     warning('No valid 1-second intervals were created. Verify train_trl data.');
 else
-    fprintf('Training epoching completed successfully. Total epochs: %d\n', size(epoch_trl, 1));
+    fprintf('Training epoching completed successfully. Total epochs: %d\n', size(train_epoch_trl, 1));
 end
 
 
 %
-%% STEP 7.3: Epoch our data for testing trial 7
+%% STEP 7.3: epoch our data for testing trial 7
 %
 
 
@@ -463,7 +463,7 @@ end
 if isempty(test_epoch_trl)
     warning('No valid 1-second intervals were created. Verify test_trl data.');
 else
-    fprintf('Teseting epoching completed successfully. Total epochs: %d\n', size(epoch_trl, 1));
+    fprintf('Testing epoching completed successfully. Total epochs: %d\n', size(test_epoch_trl, 1));
 end
 
 
@@ -482,7 +482,6 @@ S_bc.timewin = baseline_window; % Set baseline window (start and end samples)
 D_bc = spm_eeg_bc(S_bc);  % Apply baseline correction
 
 disp('Baseline correction applied successfully.');
-
 
 
 
@@ -537,6 +536,8 @@ disp(testing_timestamps);
 % STEP 9.2: continuous_D
 %
 
+train_D_bc = D_bc;
+test_D_bc = D_bc;
 
 cont_S = struct();
 cont_S.D = D_bc;
@@ -559,7 +560,7 @@ cont_S.bc = 0;
 continuous_D = spm_eeg_epochs(cont_S);
 continuous_D.save();
 
-eval(sprintf('continuous_D_%d = continuous_D;', condition_number))
+eval(sprintf('continuous_D_%d = continuous_D;', condition_number));
 
 
 %
@@ -567,28 +568,28 @@ eval(sprintf('continuous_D_%d = continuous_D;', condition_number))
 %
 
 
-train_cont_S = struct();
-train_cont_S.D = D_bc;
-
-% Recall TRL is 7 lines of start and end times
-% We can't use this because they are not equal times
-% condition vs. train vs. test
-train_cont_S.trl = training_timestamps;
-eval(sprintf('train_continuous_trl_%d = training_timestamps;', condition_number));
-
-% Convert ms to samples
-fs = D_bc.fsample;
-train_cont_S.trl(:, 1:2) = round(train_cont_S.trl(:, 1:2) * fs / 1000);
-
-% train vs. test
-train_cont_S.conditionlabels = {sprintf('Condition %d', condition_number)};
-
-train_cont_S.bc = 0;
-
-train_continuous_D = spm_eeg_epochs(train_cont_S);
-train_continuous_D.save();
-
-eval(sprintf('train_continuous_D_%d = train_continuous_D;', condition_number))
+% train_cont_S = struct();
+% train_cont_S.D = train_D_bc;
+% 
+% % Recall TRL is 7 lines of start and end times
+% % We can't use this because they are not equal times
+% % condition vs. train vs. test
+% train_cont_S.trl = training_timestamps;
+% eval(sprintf('train_continuous_trl_%d = training_timestamps;', condition_number));
+% 
+% % Convert ms to samples
+% fs = D_bc.fsample;
+% train_cont_S.trl(:, 1:2) = round(train_cont_S.trl(:, 1:2) * fs / 1000);
+% 
+% % train vs. test
+% train_cont_S.conditionlabels = {sprintf('Condition %d', condition_number)};
+% 
+% train_cont_S.bc = 0;
+% 
+% train_continuous_D = spm_eeg_epochs(train_cont_S);
+% train_continuous_D.save();
+% 
+% eval(sprintf('train_continuous_D_%d = train_continuous_D;', condition_number));
 
 
 %
@@ -596,33 +597,34 @@ eval(sprintf('train_continuous_D_%d = train_continuous_D;', condition_number))
 %
 
 
-test_cont_S = struct();
-test_cont_S.D = D_bc;
-
-% Recall TRL is 7 lines of start and end times
-% We can't use this because they are not equal times
-% condition vs. train vs. test
-test_cont_S.trl = testing_timestamps;
-eval(sprintf('test_continuous_trl_%d = testing_timestamps;', condition_number));
-
-% Convert ms to samples
-fs = D_bc.fsample;
-test_cont_S.trl(:, 1:2) = round(test_cont_S.trl(:, 1:2) * fs / 1000);
-
-% train vs. test
-test_cont_S.conditionlabels = {sprintf('Condition %d_TEST', condition_number)};
-
-test_cont_S.bc = 0;
-
-test_continuous_D = spm_eeg_epochs(test_cont_S);
-test_continuous_D.save();
-
-eval(sprintf('test_continuous_D_%d = test_continuous_D;', condition_number))
+% test_cont_S = struct();
+% test_cont_S.D = test_D_bc;
+% 
+% % Recall TRL is 7 lines of start and end times
+% % We can't use this because they are not equal times
+% % condition vs. train vs. test
+% test_cont_S.trl = testing_timestamps;
+% eval(sprintf('test_continuous_trl_%d = testing_timestamps;', condition_number));
+% 
+% % Convert ms to samples
+% fs = D_bc.fsample;
+% test_cont_S.trl(:, 1:2) = round(test_cont_S.trl(:, 1:2) * fs / 1000);
+% 
+% % train vs. test
+% test_cont_S.conditionlabels = {sprintf('Condition %d_TEST', condition_number)};
+% 
+% test_cont_S.bc = 0;
+% 
+% test_continuous_D = spm_eeg_epochs(test_cont_S);
+% test_continuous_D.save();
+% 
+% eval(sprintf('test_continuous_D_%d = test_continuous_D;', condition_number));
 
 
 %
 % STEP 9.3: epoch_D
 %
+
 
 fprintf('Starting epoching D...\n');
 
@@ -635,7 +637,7 @@ epoch_S.conditionlabels = {sprintf('Condition %d', condition_number)};
 epoch_S.bc = 0;
 epoch_D = spm_eeg_epochs(epoch_S);
 
-epoch_D.save(); 
+epoch_D.save();
 eval(sprintf('epoch_D_%d = epoch_D;', condition_number));
 eval(sprintf('epoch_trl_%d = epoch_trl;', condition_number));
 
@@ -645,37 +647,38 @@ eval(sprintf('epoch_trl_%d = epoch_trl;', condition_number));
 %
 
 
-train_epoch_S = struct();
-train_epoch_S.D = D_bc;
-
-train_epoch_S.trl = train_epoch_trl;
-train_epoch_S.conditionlabels = {sprintf('Condition %d', condition_number)};
-
-train_epoch_S.bc = 0;
-train_epoch_D = spm_eeg_epochs(train_epoch_S);
-
-train_epoch_D.save(); 
-eval(sprintf('train_epoch_D_%d = train_epoch_D;', condition_number));
-eval(sprintf('train_epoch_trl_%d = epoch_trl;', condition_number));
-
+% train_epoch_S = struct();
+% train_epoch_S.D = D_bc;
+% 
+% train_epoch_S.trl = train_epoch_trl;
+% train_epoch_S.conditionlabels = {sprintf('Condition %d', condition_number)};
+% 
+% train_epoch_S.bc = 0;
+% train_epoch_D = spm_eeg_epochs(train_epoch_S);
+% 
+% train_epoch_D.save();
+% eval(sprintf('train_epoch_D_%d = train_epoch_D;', condition_number));
+% eval(sprintf('train_epoch_trl_%d = train_epoch_trl;', condition_number));
 
 %
 % STEP 9.3.2: test_epoch_D
 %
 
+% 
+% test_epoch_S = struct();
+% test_epoch_S.D = D_bc;
+% 
+% test_epoch_S.trl = test_epoch_trl;
+% test_epoch_S.conditionlabels = {sprintf('Condition %d_TEST', condition_number)};
+% 
+% test_epoch_S.bc = 0;
+% test_epoch_D = spm_eeg_epochs(test_epoch_S);
+% 
+% test_epoch_D.save();
+% eval(sprintf('test_epoch_D_%d = test_epoch_D;', condition_number));
+% eval(sprintf('test_epoch_trl_%d = test_epoch_trl;', condition_number));
 
-test_epoch_S = struct();
-test_epoch_S.D = D_bc;
 
-test_epoch_S.trl = test_epoch_trl;
-test_epoch_S.conditionlabels = {sprintf('Condition %d_TEST', condition_number)};
-
-test_epoch_S.bc = 0;
-test_epoch_D = spm_eeg_epochs(test_epoch_S);
-
-test_epoch_D.save(); 
-eval(sprintf('test_epoch_D_%d = test_epoch_D;', condition_number));
-eval(sprintf('test_epoch_trl_%d = epoch_trl;', condition_number));
 
 
 %
@@ -683,40 +686,55 @@ eval(sprintf('test_epoch_trl_%d = epoch_trl;', condition_number));
 %
 
 
+%
 % Continuous
+%
 
-save(fullfile(preparedDataDir, sprintf('continuous_D_%d.mat', condition_number)), sprintf('continuous_D_%d', condition_number));
+% save(fullfile(preparedDataDir, sprintf('continuous_D_%d.mat', condition_number)), sprintf('continuous_D_%d', condition_number));
+% writematrix(eval(sprintf('continuous_trl_%d', condition_number)), fullfile(preparedDataDir, sprintf('continuous_trl_%d.csv', condition_number)));
 
-writematrix(eval(sprintf('continuous_trl_%d', condition_number)), fullfile(preparedDataDir, sprintf('continuous_trl_%d.csv', condition_number)));
 
-% Train Continuous
+%
+% Continuous Training
+%
 
-save(fullfile(preparedDataDir, sprintf('train_continuous_D_%d.mat', condition_number)), sprintf('train_continuous_D_%d', condition_number));
 
-writematrix(eval(sprintf('train_continuous_trl_%d', condition_number)), fullfile(preparedDataDir, sprintf('train_continuous_trl_%d.csv', condition_number)));
+% save(fullfile(preparedDataDir, sprintf('train_continuous_D_%d.mat', condition_number)), sprintf('train_continuous_D_%d', condition_number));
+% writematrix(eval(sprintf('train_continuous_trl_%d', condition_number)), fullfile(preparedDataDir, sprintf('train_continuous_trl_%d.csv', condition_number)));
 
-% Test Continuous
 
-save(fullfile(preparedDataDir, sprintf('test_continuous_D_%d.mat', condition_number)), sprintf('test_continuous_D_%d', condition_number));
+%
+% Continuous Testing
+%
 
-writematrix(eval(sprintf('test_continuous_trl_%d', condition_number)), fullfile(preparedDataDir, sprintf('test_continuous_trl_%d.csv', condition_number)));
 
-% Epoch
+% save(fullfile(preparedDataDir, sprintf('test_continuous_D_%d.mat', condition_number)), sprintf('test_continuous_D_%d', condition_number));
+% writematrix(eval(sprintf('test_continuous_trl_%d', condition_number)), fullfile(preparedDataDir, sprintf('test_continuous_trl_%d.csv', condition_number)));
 
-save(fullfile(preparedDataDir, sprintf('epoch_D_%d.mat', condition_number)), sprintf('epoch_D_%d', condition_number));
 
-writematrix(eval(sprintf('epoch_trl_%d', condition_number)), fullfile(preparedDataDir, sprintf('epoch_trl_%d.csv', condition_number)));
+%
+% Epochs
+%
 
-% Train Epoch
+% save(fullfile(preparedDataDir, sprintf('epoch_D_%d.mat', condition_number)), sprintf('epoch_D_%d', condition_number));
+% writematrix(eval(sprintf('epoch_trl_%d', condition_number)), fullfile(preparedDataDir, sprintf('epoch_trl_%d.csv', condition_number)));
 
-save(fullfile(preparedDataDir, sprintf('train_epoch_D_%d.mat', condition_number)), sprintf('train_epoch_D_%d', condition_number));
 
-writematrix(eval(sprintf('train_epoch_trl_%d', condition_number)), fullfile(preparedDataDir, sprintf('train_epoch_trl_%d.csv', condition_number)));
+%
+% Epochs Training
+%
 
-% Test Epoch
 
-save(fullfile(preparedDataDir, sprintf('test_epoch_D_%d.mat', condition_number)), sprintf('test_epoch_D_%d', condition_number));
+% save(fullfile(preparedDataDir, sprintf('train_epoch_D_%d.mat', condition_number)), sprintf('train_epoch_D_%d', condition_number));
+% writematrix(eval(sprintf('train_epoch_trl_%d', condition_number)), fullfile(preparedDataDir, sprintf('train_epoch_trl_%d.csv', condition_number)));
 
-writematrix(eval(sprintf('test_epoch_trl_%d', condition_number)), fullfile(preparedDataDir, sprintf('test_epoch_trl_%d.csv', condition_number)));
+
+%
+% Epochs Testing
+%
+
+
+% save(fullfile(preparedDataDir, sprintf('test_epoch_D_%d.mat', condition_number)), sprintf('test_epoch_D_%d', condition_number));
+% writematrix(eval(sprintf('test_epoch_trl_%d', condition_number)), fullfile(preparedDataDir, sprintf('test_epoch_trl_%d.csv', condition_number)));
 
 disp('Files saved successfully in the Prepared Data folder.');
